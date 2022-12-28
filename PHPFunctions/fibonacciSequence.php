@@ -13,7 +13,9 @@
     <button>Submit</button>
     </form>
     <?php
-        $input=$_GET['input'];
+        if(isset($_GET['input'])) {
+            echo Fibonacci($_GET['input']);
+        }
        function Fibonacci($number) {
             if($number==0) {
                 return 0;
@@ -24,9 +26,6 @@
                return  (Fibonacci($number - 1) +
                         Fibonacci($number - 2));
        }
-       if($input!=null) {
-        echo Fibonacci($input);    
-       }  
     ?>
 </body>
 </html>

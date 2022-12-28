@@ -16,7 +16,9 @@
         /*
         Takes string input and prints out word without vowels
          */
-        $input= $_GET['input'];
+        if(isset($_GET['input'])) {
+            VowelRemove($_GET['input']);
+        }
     function VowelRemove($string) {
         $vowels = array('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U');
         for ($i = 0; $i < strlen($string); $i++) {
@@ -25,9 +27,6 @@
             }
             echo $string[$i];
         }
-    }
-    if($input!=null) {
-        VowelRemove($input);
     }
     ?>
 </body>
