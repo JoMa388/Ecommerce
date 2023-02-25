@@ -26,31 +26,9 @@
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-md navbar-dark">
-    <div class="container-xl">
-      <span class="fw-bold navbar-brand text-dark">&#128008; Store</span>
-
-      <!-- Toggle button for mobile -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
-        aria-controls="man-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="../ecommercesite/index.html" class="nav-link text-dark fw-bolder">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="signup.html" class="nav-link me-2 text-dark fw-bolder">Sign Up</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
+  <?php
+  include_once 'header.php';
+  ?>
 
   <section class="container mt-5 postion-relative">
     <div class="row">
@@ -58,11 +36,11 @@
         <img src="../bootstrapmorph/undraw_cat_s1wg.svg" alt="cat" class="img-fluid mt-5 ms-2 m-auto" />
       </div>
       <div>
-        <form action="login.php" method="post" class="col-12 bg-dark rounded-2 position-absolute">
+        <form action="includes/login.inc.php" method="post" class="col-12 bg-dark rounded-2 position-absolute">
           <div class="row mt-5">
             <!-- Username -->
             <div class="form-floating col-10 col-md-8 col-lg-9 mb-2 m-auto">
-              <input type="text" id="userName" class="form-control" placeholder="Username" required />
+              <input type="text" id="userName" class="form-control" placeholder="Username" name="username" required />
               <label for="userName" class="fw-bold mb-0">Username</label>
               <div class="invalid-feedback">Enter a Username</div>
             </div>
@@ -70,7 +48,8 @@
           <!-- Password -->
           <div class="row">
             <div class="form-floating col-10 col-md-8 col-lg-9 mb-2 m-auto">
-              <input type="text" id="password" name="password" class="form-control" placeholder="Password" required />
+              <input type="text" id="password" name="password" class="form-control" placeholder="Password"
+                name="password" required />
               <label for="password" class="fw-bold mb-0">Password</label>
               <div class="invalid-feedback">Invalid Password</div>
             </div>
@@ -88,9 +67,16 @@
           <!-- Button -->
           <div class="mt-3">
             <div class="col-6 col-md-4 col-lg-8 text-center m-auto">
-              <button class="form-control btn btn-success btn-smfw-bold mb-5 shadow-none" type="submit">
+              <button class="form-control btn btn-success btn-smfw-bold mb-5 shadow-none" type="submit" name="submit">
                 Login
               </button>
+              <?php
+              if (isset($_GET["error"])) {
+                if ($_GET["error"] == "wronglogin") {
+                  echo "<p>Invalid Username/Password Try Again</p>";
+                }
+              }
+              ?>
             </div>
           </div>
         </form>
