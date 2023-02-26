@@ -1,11 +1,10 @@
 <?php
 
-$serverName = "localhost";
-$dBUsername = "root";
-$dBPassword = "";
-$dBName = "eCommerce";
-
-$conn = mysqli_connect($serverName, $dbUsername, $dBPassword, $dBName);
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "";
+$dbName = "eCommerce";
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
 if (!$conn) {
     die("Connection Failed" . mysqli_connect_error());
