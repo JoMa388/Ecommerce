@@ -9,8 +9,7 @@
   <style>
     @media (min-width: 1200px) {
       .container {
-        max-width: 500px;
-        position: relative;
+        max-width: 30rem;
       }
     }
 
@@ -30,10 +29,10 @@
   include_once 'header.php';
   ?>
 
-  <section class="container mt-5 postion-relative">
+  <section class="container mt-5 position-relative ">
     <div class="row">
-      <div class="col-12 overlay">
-        <img src="../bootstrapmorph/undraw_cat_s1wg.svg" alt="cat" class="img-fluid mt-5 ms-2 m-auto" />
+      <div class="col- overlay m-auto">
+        <img src="../bootstrapmorph/undraw_cat_s1wg.svg" alt="cat" class="img-fluid mt-5 ms-2" />
       </div>
       <div>
         <form action="includes/login.inc.php" method="post" class="col-12 bg-dark rounded-2 position-absolute">
@@ -62,6 +61,11 @@
           <div class="row">
             <div class="col-10 col-md-6 col-lg-4 text-center m-auto">
               <a href="#" class="text-decoration-none">Forgot Password</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-10 col-md-6 col-lg-8 text-center m-auto">
+              <a href="signup.php" class="text-decoration-none">Don't have an account, sign up here</a>
             </div>
           </div>
           <!-- Button -->
