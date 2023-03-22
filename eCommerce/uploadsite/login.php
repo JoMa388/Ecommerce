@@ -41,16 +41,13 @@
             <div class="form-floating col-10 col-md-8 col-lg-9 mb-2 m-auto">
               <input type="text" id="userName" class="form-control" placeholder="Username" name="username" required />
               <label for="userName" class="fw-bold mb-0">Username</label>
-              <div class="invalid-feedback">Enter a Username</div>
             </div>
           </div>
           <!-- Password -->
           <div class="row">
             <div class="form-floating col-10 col-md-8 col-lg-9 mb-2 m-auto">
-              <input type="text" id="password" name="password" class="form-control" placeholder="Password"
-                name="password" required />
+              <input type="text" id="password" class="form-control" placeholder="Password" name="password" required />
               <label for="password" class="fw-bold mb-0">Password</label>
-              <div class="invalid-feedback">Invalid Password</div>
             </div>
           </div>
           <div class="row">
