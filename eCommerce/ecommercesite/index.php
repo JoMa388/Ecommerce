@@ -12,6 +12,7 @@
 <body>
   <?php
   include_once '../uploadsite/header.php';
+  include_once "../uploadsite/includes/db_conn.php";
   ?>
 
 
@@ -28,10 +29,8 @@
         <button type="button" class="btn btn-outline-light shadow-none me-1 rounded-2 fw-bolder fs-5"
           data-bs-toggle="modal" data-bs-target="#addproduct">Add Product</button>
       </div>
-    </div>';
-    }
-    ?>
-    <!-- Table -->
+    </div>
+ 
     <div class="container p-0">
       <table class="table table-hover text-center">
         <thead class="bg-info text-light">
@@ -42,76 +41,73 @@
             <th width="20%" scope="col" class="rounded-end">Edit/Delete</th>
           </tr>
         </thead>
-        <tbody>
-          <?php
-          include_once "../uploadsite/includes/db_conn.php";
-          $sql = "SELECT * FROM product;";
-          $result = mysqli_query($conn, $sql);
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo <<<product
+        <tbody>';
+
+      $sql = "SELECT * FROM product;";
+      $result = mysqli_query($conn, $sql);
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo <<<product
               <tr class="align-middle">
                 <td>$row[pname]</td>
                 <td>$row[pdesc]</td>
                 <td>$$row[price]</td>
                 <td>
-                  <a href='update.php?edit=$row[pid]'> <button type="button" class="btn btn-sm">Edit</button> </a>
+                  <a href='../uploadsite/includes/update.php?edit=$row[pid]'> <button type="button" class="btn btn-sm">Edit</button> </a>
                   <button onclick="confirm_delete($row[pid])" class="btn btn-outline-danger btn-sm">Delete</button></a>
                 </td>
               </tr>
           product;
-          }
-          ?>
-        </tbody>
-      </table>
-      <!-- Modal Add Product-->
-      <div class="modal" id="addproduct">
-        <div class="modal-dialog">
-          <!-- Form -->
-          <form action="product.php" method="post">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Add a Product</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                </button>
+      }
+    }
+    ?>
+    </tbody>
+    </table>
+    <!-- Modal Add Product-->
+    <div class="modal" id="addproduct">
+      <div class="modal-dialog">
+        <!-- Form -->
+        <form action="../uploadsite/includes/product.php" method="post">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Add a Product</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Name -->
+              <div class="input-group mb-2">
+                <span class="input-group-text bg-info text-light col-3">Name</span>
+                <input type="text" class="form-control" name="pname" required />
               </div>
-              <div class="modal-body">
-                <!-- Name -->
-                <div class="input-group mb-2">
-                  <span class="input-group-text bg-info text-light col-3">Name</span>
-                  <input type="text" class="form-control" name="pname" required />
-                </div>
-                <!-- Price -->
-                <div class="input-group mb-2 ">
-                  <span class="input-group-text bg-info text-light col-3">Price</span>
-                  <input type="text" class="form-control" name="price" required />
-                </div>
-                <!-- Description -->
-                <div class="input-group">
-                  <span class="input-group-text bg-info text-light col-3">Description</span>
-                  <textarea class="form-control" name="pdesc" rows="1" required></textarea>
-                </div>
+              <!-- Price -->
+              <div class="input-group mb-2 ">
+                <span class="input-group-text bg-info text-light col-3">Price</span>
+                <input type="text" class="form-control" name="price" required />
               </div>
-              <div class="modal-footer">
-                <button type="submit" name="addproduct"
-                  class="btn btn-outline-success rounded-2 shadow-none">Submit</button>
-                <button type="button" class="btn btn-secondary rounded-2 shadow-none"
-                  data-bs-dismiss="modal">Close</button>
+              <!-- Description -->
+              <div class="input-group">
+                <span class="input-group-text bg-info text-light col-3">Description</span>
+                <textarea class="form-control" name="pdesc" rows="1" required></textarea>
               </div>
             </div>
-          </form>
-        </div>
+            <div class="modal-footer">
+              <button type="submit" name="addproduct"
+                class="btn btn-outline-success rounded-2 shadow-none">Submit</button>
+              <button type="button" class="btn btn-secondary rounded-2 shadow-none"
+                data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </form>
       </div>
-      <!-- Modal Delete Product -->
-
-
     </div>
-    <script>
-      function confirm_delete(id) {
-        if (confirm("Are you sure you want to delete this product?")) {
-          window.location.href = "product.php?delete=" + id;
-        }
+  </div>
+  <script>
+    function confirm_delete(id) {
+      if (confirm("Are you sure you want to delete this product?")) {
+        window.location.href = "../uploadsite/includes/product.php?delete=" + id;
       }
-    </script>
+    }
+  </script>
 </body>
 <script src=" ../bootstrapmorph/js/bootstrap.js">
 </script>
