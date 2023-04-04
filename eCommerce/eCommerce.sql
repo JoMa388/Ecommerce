@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2023 at 05:27 PM
+-- Generation Time: Feb 25, 2023 at 05:19 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -18,24 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `messages`
+-- Database: `eCommerce`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `contact` (
-  `user_id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `address2` varchar(50) DEFAULT NULL,
-  `state` varchar(50) NOT NULL,
-  `phone_number` varchar(15) NOT NULL,
-  `message` varchar(100) NOT NULL
+CREATE TABLE `users` (
+  `usersid` int(11) NOT NULL,
+  `usersFname` varchar(128) NOT NULL,
+  `usersLname` varchar(128) NOT NULL,
+  `usersEmail` varchar(128) NOT NULL,
+  `usersUid` varchar(128) NOT NULL,
+  `usersPwd` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -43,20 +41,20 @@ CREATE TABLE `contact` (
 --
 
 --
--- Indexes for table `contact`
+-- Indexes for table `users`
 --
-ALTER TABLE `contact`
-  ADD PRIMARY KEY (`user_id`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`usersid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `contact`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `contact`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+ALTER TABLE `users`
+  MODIFY `usersid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
