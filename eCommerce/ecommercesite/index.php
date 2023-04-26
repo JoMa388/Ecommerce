@@ -11,7 +11,7 @@
 
 <body>
   <?php
-  include_once '../uploadsite/header.php';
+  include_once 'siteIncludes/siteHeader.php';
   include_once "../uploadsite/includes/db_conn.php";
   ?>
 

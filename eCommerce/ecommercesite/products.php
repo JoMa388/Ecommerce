@@ -11,10 +11,10 @@
 
 <body>
     <?php
-    include_once '../uploadsite/header.php';
+    include_once 'siteIncludes/siteHeader.php';
     include_once '../uploadsite/includes/db_conn.php';
     ?>
-    <div class="container mt-5">
+    <div class="container mt-5 d-flex">
         <div class="row">
             <?php
             $sql = "SELECT * FROM product;";
@@ -24,8 +24,9 @@
               <div class="col-4 mt-4">
                 <div class="card">
                     <div class="card-body text-center">
+                        <img src="../bootstrapmorph/undraw_cat_s1wg.svg" alt="cat" class="image-thumbnail border-1" width="300">
                         <h5 class="card-title">$row[pname]</h5>
-                        <p class="card-text">$row[pdes]</p>
+                        <p class="card-text">$row[pdesc]</p>
                         <p class="card-text">$row[price]</p>
                         <button type="submit" class="btn btn-primary m-auto">Add to Cart</button>
                     </div>
