@@ -18,14 +18,14 @@ function addproduct()
 
     $query = "INSERT INTO product(pname,pdesc,price) VALUES ('$pname','$description','$price');";
     mysqli_query($conn, $query);
-    header("location:../../ecommercesite/index.php");
+    header("location:../index.php");
 }
 function deleteproduct()
 {
     include_once "db_conn.php";
     $id = $_GET["delete"];
     mysqli_query($conn, "DELETE FROM product WHERE pid=$id");
-    header("location:../../ecommercesite/index.php");
+    header("location:../index.php");
 }
 function editproduct()
 {
@@ -42,7 +42,7 @@ function editproduct()
     }
     if ($description != '') {
         mysqli_query($conn, "UPDATE product SET pdesc='$description' WHERE pid=$pid;");
-        header("location:../../ecommercesite/index.php");
+        header("location:../index.php");
     }
 }
 ?>

@@ -20,22 +20,12 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link  fw-bold" href="products.php">Products</a>
                 </li>
+
+            </ul>
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
                 <li class="nav-item">
                     <a class="nav-link  fw-bold" href="contact.php">Contact Us</a>
                 </li>
-            </ul>
-            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-                <?php
-                if (isset($_SESSION["useruid"])) {
-                    echo '<li class="nav-item"><a href="profile.php" class="nav-link  fw-bolder">Profile</a></li>';
-                    echo '<li class="nav-item"><a href="../uploadsite/includes/logout.php" class="nav-link  fw-bolder">Log Out</a></li>';
-                } else {
-                    echo '<li class="nav-item"><a href="../uploadsite/signup.php" class="nav-link  fw-bolder">Sign Up</a></li>';
-                    echo '<li class="nav-item">
-                    <a href="../uploadsite/login.php" class="nav-link me-2  fw-bolder">Login</a>
-                </li>';
-                }
-                ?>
             </ul>
         </div>
     </div>
