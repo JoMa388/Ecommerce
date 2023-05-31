@@ -46,12 +46,13 @@ session_start();
     <div id="shoppingcart">
     </div>
 
-
-    <h3 class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4 border-top">Total: $124</h2>
-        <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-5">View
-            Cart</button>
-        <button
-            class="btn bg-success text-light shadow-none rounded-2 position-absolute bottom-0 end-0 mb-3 me-5">Checkout</button>
+    <div class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4 border-top">
+        <h4>Total: <span id="total"></span></h4>
+    </div>
+    <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-5">View
+        Cart</button>
+    <button
+        class="btn bg-success text-light shadow-none rounded-2 position-absolute bottom-0 end-0 mb-3 me-5">Checkout</button>
 </div>
 <script>
     function sideCart() {

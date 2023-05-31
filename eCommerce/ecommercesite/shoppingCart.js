@@ -1,8 +1,14 @@
 let cart =[];
 const shoppingCart=document.querySelector("#shoppingcart");
 const products=document.querySelectorAll('.product');
-
-
+const total= document.querySelector("#total");
+const totalSumPrice= function() {
+    let sumPrice=0;
+    cart.forEach(product=>{
+        sumPrice+=product.price;
+    });
+    return sumPrice;
+}
 
 function updateProductCart(product) {
     for(let i=0;i<cart.length;i++){
@@ -23,9 +29,9 @@ function updateCartHTML(){
             <h5 class="card-title text-center mt-3">${product.name}</h5>
             <div class="d-flex justify-content-between mb-5">
                 <div class="ms-3">
-                    <button class="btn shadow-none bg-dark text-light p-1 m-0 rounded-0" data-id='${product.id}'>-</button>
+                    <button class="btn shadow-none bg-dark text-light p-1 m-0 rounded-0 minusButton" data-id='${product.id}'>-</button>
                     <span class="countOfProducts">${product.count}</span>
-                    <button class="btn shadow-none bg-dark text-light p-1 m-0 rounded-0" data-id='${product.id}'>+</button>
+                    <button class="btn shadow-none bg-dark text-light p-1 m-0 rounded-0 plusButton" data-id='${product.id}'>+</button>
                 </div>
                 <h5 id="price" class="card-text text-start me-3">$${product.price}</h5>
             </div>
@@ -33,7 +39,11 @@ function updateCartHTML(){
         `
     });
     shoppingCart.innerHTML=result.join('');
-    console.log(cart);
+    total.innerHTML= "$" +totalSumPrice();
+    }
+    else{
+        total.innerHTML="";
+        shoppingCart.innerHTML="";
     }
 }
 products.forEach(product => {
@@ -54,3 +64,25 @@ products.forEach(product => {
             }
         })
     });
+
+shoppingCart.addEventListener('click',(e)=>{
+    const plusButton=e.target.classList.contains("plusButton");
+    const minusButton=e.target.classList.contains("minusButton");
+    if(plusButton||minusButton){
+        for(let i=0;i<cart.length;i++){
+            if(cart[i].id===e.target.dataset.id){
+                if(plusButton){
+                    cart[i].count+=1;
+                }
+                else if(minusButton){
+                    cart[i].count -=1;
+                }
+                cart[i].price=cart[i].basePrice*cart[i].count;
+            }
+            if(cart[i].count<=0){
+                cart.splice(i,1);
+            }
+        }
+        updateCartHTML();
+    }
+});
