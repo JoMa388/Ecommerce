@@ -26,12 +26,13 @@ session_start();
                     <a class="nav-link  fw-bold" href="contact.php">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <button onclick="sideCart()" class="nav-link  fw-bold btn shadow-none bg-dark" href="#"><img
-                            src="../bootstrapmorph/cart-white.svg" alt="Shopping Cart" class="img-fluid pb-0 pt-0"
-                            style="width:1.5rem">
+                    <button onclick="sideCart()" class="nav-link  fw-bold btn shadow-none btn bg-dark position-relative"
+                        href="#"><img src="../bootstrapmorph/cart-white.svg" alt="Shopping Cart"
+                            class="img-fluid pb-0 pt-0" style="width:1.5rem">
+                        <span
+                            class=" countItemNav position-absolute top-0 start-100 translate-middle badge border border-light rounded-pill bg-info p-1 mt-2 d-none">
+                        </span>
                     </button>
-                    <!-- <div class="d-flex justify-content-center position-absolute sticky-top mt-4 ms-4 ps-2">
-                        0</div> -->
                 </li>
             </ul>
         </div>
@@ -39,14 +40,17 @@ session_start();
 </nav>
 <div id="sidecart" class="position-fixed end-100 bg-secondary shadow-lg"
     style="width:22rem;height:100vh;right:0;top:0;">
-    <div class="container d-flex flex-column">
+    <div class="container d-flex flex-column border-dark border-2 border-bottom">
         <button class="btn bg-danger shadow-none text-light mt-4" onclick="closeCart()">Close</button>
-        <h2 class="text-center mt-2 text-dark fw-bold mb-3">Your Cart</h2>
+        <h3 class="text-center text-dark fw-bold mt-2 mb-2">Your Cart:
+            <span class="end-0 text-dark mt-0 countItemCart">0
+            </span>
+        </h3>
     </div>
     <div id="shoppingcart">
     </div>
 
-    <div class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4 border-top">
+    <div class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4">
         <h4>Total: <span id="total"></span></h4>
     </div>
     <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-5">View
