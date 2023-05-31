@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <nav class="navbar navbar-expand-md navbar-dark bg-dark p-4">
     <div class="container-xl">
         <span class="fw-bold navbar-brand d-flex mr-auto "><a href="index.php"
@@ -26,7 +25,43 @@ session_start();
                 <li class="nav-item">
                     <a class="nav-link  fw-bold" href="contact.php">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <button onclick="sideCart()" class="nav-link  fw-bold btn shadow-none bg-dark" href="#"><img
+                            src="../bootstrapmorph/cart-white.svg" alt="Shopping Cart" class="img-fluid pb-0 pt-0"
+                            style="width:1.5rem">
+                    </button>
+                    <!-- <div class="d-flex justify-content-center position-absolute sticky-top mt-4 ms-4 ps-2">
+                        0</div> -->
+                </li>
             </ul>
         </div>
     </div>
 </nav>
+<div id="sidecart" class="position-fixed end-100 bg-secondary shadow-lg"
+    style="width:22rem;height:100vh;right:0;top:0;">
+    <div class="container d-flex flex-column">
+        <button class="btn bg-danger shadow-none text-light mt-4" onclick="closeCart()">Close</button>
+        <h2 class="text-center mt-2 text-dark fw-bold mb-3">Your Cart</h2>
+    </div>
+    <div id="shoppingcart">
+    </div>
+
+
+    <h3 class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4 border-top">Total: $124</h2>
+        <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-5">View
+            Cart</button>
+        <button
+            class="btn bg-success text-light shadow-none rounded-2 position-absolute bottom-0 end-0 mb-3 me-5">Checkout</button>
+</div>
+<script>
+    function sideCart() {
+        const cart = document.getElementById("sidecart");
+        cart.classList.remove('end-100');
+        cart.classList.add('end-0');
+    }
+    function closeCart() {
+        const cart = document.getElementById("sidecart");
+        cart.classList.remove('end-0');
+        cart.classList.add('end-100');
+    }
+</script>

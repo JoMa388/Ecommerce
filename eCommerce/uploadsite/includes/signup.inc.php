@@ -1,4 +1,5 @@
 <?php
+print_r($_POST);
 if (isset($_POST["submit"])) {
     $fname = $_POST["firstname"];
     $lname = $_POST["lastname"];
