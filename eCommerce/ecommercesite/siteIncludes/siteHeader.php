@@ -38,8 +38,8 @@ session_start();
         </div>
     </div>
 </nav>
-<div id="sidecart" class="position-fixed end-100 bg-secondary shadow-lg"
-    style="width:22rem;height:100vh;right:0;top:0;">
+<div id="sidecart" class="position-absolute end-100 bg-secondary shadow-lg"
+    style="width:19rem;height:100vh;right:0;top:0;z-index:3;">
     <div class="container d-flex flex-column border-dark border-2 border-bottom">
         <button class="btn bg-danger shadow-none text-light mt-4" onclick="closeCart()">Close</button>
         <h3 class="text-center text-dark fw-bold mt-2 mb-2">Your Cart:
@@ -53,10 +53,10 @@ session_start();
     <div class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4">
         <h4>Total: <span id="total"></span></h4>
     </div>
-    <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-5">View
+    <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-4">View
         Cart</button>
     <button
-        class="btn bg-success text-light shadow-none rounded-2 position-absolute bottom-0 end-0 mb-3 me-5">Checkout</button>
+        class="btn bg-success text-light shadow-none rounded-2 position-absolute bottom-0 end-0 mb-3 me-4">Checkout</button>
 </div>
 <script>
     function sideCart() {
