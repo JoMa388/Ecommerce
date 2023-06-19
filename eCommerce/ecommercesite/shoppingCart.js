@@ -1,4 +1,7 @@
-let cart =[];
+let cart =JSON.parse(localStorage.getItem('shoppingCart'));
+if(!cart){
+    cart=[];
+}
 const shoppingCart=document.querySelector("#shoppingcart");
 const products=document.querySelectorAll('.product');
 const total= document.querySelector("#total");
@@ -30,6 +33,7 @@ function updateProductCart(product) {
 }
 
 function updateCartHTML(){
+    localStorage.setItem('shoppingCart',JSON.stringify(cart));
     if(cart.length>0){
     let result=cart.map(product=>{
         return `
@@ -44,7 +48,8 @@ function updateCartHTML(){
                 <h5 id="price" class="card-text text-start me-3">$${product.price}</h5>
             </div>
         </div>
-        `
+        <input type="hidden" name="pid[${product.id}]" value="${product.count}">
+        `   
     });
     shoppingCart.innerHTML=result.join('');
     total.innerHTML= "$" +totalSumPrice();  
@@ -99,3 +104,4 @@ shoppingCart.addEventListener('click',(e)=>{
         updateCartHTML();
     }
 });
+updateCartHTML();

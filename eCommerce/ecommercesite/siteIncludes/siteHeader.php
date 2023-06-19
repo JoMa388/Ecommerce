@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark p-4">
     <div class="container-xl">
         <span class="fw-bold navbar-brand d-flex mr-auto "><a href="index.php"
@@ -30,7 +27,7 @@ session_start();
                         href="#"><img src="../bootstrapmorph/cart-white.svg" alt="Shopping Cart"
                             class="img-fluid pb-0 pt-0" style="width:1.5rem">
                         <span
-                            class=" countItemNav position-absolute top-0 start-100 translate-middle badge border border-light rounded-pill bg-info p-1 mt-2 d-none">
+                            class=" countItemNav position-absolute top-0 start-100 translate-middle badge rounded-pill bg-info p-1 mt-2 d-none">
                         </span>
                     </button>
                 </li>
@@ -47,16 +44,18 @@ session_start();
             </span>
         </h3>
     </div>
-    <div id="shoppingcart">
-    </div>
+    <form action="checkout.php" method="POST">
+        <div id="shoppingcart" class="position-relative overflow-y-auto">
+        </div>
+        <div class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4">
+            <h4>Total: <span id="total"></span></h4>
+        </div>
+        <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-4">View
+            Cart</button>
+        <button type="submit"
+            class="btn bg-success  shadow-none rounded-2 position-absolute bottom-0 end-0 mb-3 me-4 text-light">Checkout</a></button>
 
-    <div class="position-absolute bottom-0 translate-middle-y ms-2 mb-4 pb-4">
-        <h4>Total: <span id="total"></span></h4>
-    </div>
-    <button class="btn bg-info text-light shadow-none rounded-2 position-absolute bottom-0 start-0 mb-3 ms-4">View
-        Cart</button>
-    <button
-        class="btn bg-success text-light shadow-none rounded-2 position-absolute bottom-0 end-0 mb-3 me-4">Checkout</button>
+    </form>
 </div>
 <script>
     function sideCart() {
