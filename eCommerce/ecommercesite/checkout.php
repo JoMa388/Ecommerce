@@ -871,6 +871,7 @@
     <script>
         function payNow() {
             document.querySelector('.itemForm').submit();
+            localStorage.clear('product.php');
         }
     </script>
 </body>
