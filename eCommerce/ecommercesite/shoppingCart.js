@@ -48,7 +48,7 @@ function updateCartHTML(){
                 <h5 id="price" class="card-text text-start me-3">$${product.price}</h5>
             </div>
         </div>
-        <input type="hidden" name="pid[${product.id}]" value="${product.count}">
+        <input type="hidden" name="pid[${product.id}]" value="${product.count}"> 
         `   
     });
     shoppingCart.innerHTML=result.join('');

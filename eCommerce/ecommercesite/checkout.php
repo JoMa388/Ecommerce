@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link href="../bootstrapmorph/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 </head>
 
 <body class="">
@@ -821,50 +819,60 @@
                 <!-- Pay Button -->
                 <div class="d-flex flex-row-reverse">
                     <div class="col-4 mt-3">
-                        <button class="form-control bg-dark text-light btn mb-5 shadow-none rounded-2 " type="submit">
+                        <button class="form-control bg-dark text-light btn mb-5 shadow-none rounded-2 " type="button"
+                            onclick="payNow()">
                             Pay Now
                         </button>
                     </div>
                 </div>
             </form>
             <div class="col-6 border-start border-1 border-dark">
-                <?php
-                include_once '../uploadsite/includes/db_conn.php';
-                $pid = $_POST['pid'];
-                foreach ($pid as $value => $key) {
-                    $sql = "SELECT * FROM product WHERE pid =$value;";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_assoc($result);
-                    echo " 
-                            <div class='row d-flex'>
-                                <div class='col-4'>
-                                    <span
-                                        class=' mb-5 position-relative top-50 start-100 translate-middle badge rounded-pill bg-info'>$key</span>
-                                    <img src='../bootstrapmorph/undraw_cat_s1wg.svg' alt='cartImage' class='img-thumbnail bg-dark shadow-none'>
-
+                <form action="order.php" method="POST" class="itemForm">
+                    <?php
+                    include_once '../uploadsite/includes/db_conn.php';
+                    $pid = $_POST['pid'];
+                    foreach ($pid as $value => $key) {
+                        $sql = "SELECT * FROM product WHERE pid =$value;";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($result);
+                        echo " 
+                            <div class='container'>
+                                <div class='row d-flex'>
+                                    <div class='col-4'>
+                                        <span
+                                            class=' mb-5 position-relative top-50 start-100 translate-middle badge rounded-pill bg-info'>$key</span>
+                                        <img src='../bootstrapmorph/undraw_cat_s1wg.svg' alt='cartImage' class='img-thumbnail bg-dark shadow-none'>
+                                    </div>
+                                    <div class='col-4 mt-5 pt-2'>
+                                        <p class='mt-5 text-dark fw-bolder'>$row[pname]</p>
+                                    </div>
+                                    <div class='col-4 mt-5 pt-2'>
+                                        <p class='mt-5 text-dark fw-bolder'>$$row[price]</p>
+                                    </div>
                                 </div>
-                                <div class='col-4 mt-5 pt-2'>
-                                    <p class='mt-5 text-dark fw-bolder'>$row[pname]</p>
-                                </div>
-                                <div class='col-4 mt-5 pt-2'>
-                                    <p class='mt-5 text-dark fw-bolder'>$$row[price]</p>
-                                </div>
-                                </div>";
-                }
-                ?>
-                <!--  Total -->
-                <div class="row mt-5 ms-3">
-                    <div class="col-3">
-                        <h4 class="text-dark fw-bolder">Total</h4>
+                                <input type='hidden' name='pid[$value]' value='$key'>
+                            </div>";
+                    }
+                    ?>
+                    <!--  Total -->
+                    <div class="row mt-5 ms-3">
+                        <div class="col-3">
+                            <h4 class="text-dark fw-bolder">Total</h4>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end ms-2">
+                            <p>USD <span class=" ms-1 text-dark fw-bold">$5.00</span></p>
+                        </div>
                     </div>
-                    <div class="col-6 d-flex justify-content-end ms-2">
-                        <p>USD <span class=" ms-1 text-dark fw-bold">$5.00</span></p>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
     <script src="checkout.js"></script>
+    <script>
+        function payNow() {
+            document.querySelector('.itemForm').submit();
+        }
+    </script>
 </body>
 
 </html>
