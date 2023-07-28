@@ -21,7 +21,6 @@
       top: 98%
     }
   </style>
-  <title>Login</title>
 </head>
 
 <body>
@@ -32,7 +31,7 @@
   <section class="container mt-5 position-relative ">
     <div class="row">
       <div class="col- overlay m-auto">
-        <img src="../bootstrapmorph/undraw_cat_s1wg.svg" alt="cat" class="img-fluid mt-5 ms-2" />
+        <img src="../bootstrapmorph/undraw_cat_s1wg.svg" alt="cat" class="img-fluid mt-1 ms-1" />
       </div>
       <div>
         <form action="includes/login.inc.php" method="post" class="col-12 bg-dark rounded-2 position-absolute">

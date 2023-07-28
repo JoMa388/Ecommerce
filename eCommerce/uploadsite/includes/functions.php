@@ -87,7 +87,7 @@ function loginUser($conn, $username, $pwd)
         $_SESSION["userid"] = $uidExists["usersid"];
         $_SESSION["useruid"] = $uidExists["usersUid"];
         $_SESSION["userfname"] = $uidExists["usersFname"];
-        header("location:../../ecommercesite/index.php");
+        header("location:../index.php");
         exit();
     }
 }
